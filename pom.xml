@@ -8,7 +8,7 @@
 	<groupId>com.amigoscode</groupId>
 	<artifactId>amigosservices</artifactId>
 	<version>1.0-SNAPSHOT</version>
-
+	<packaging>pom</packaging>
 	<name>amigosservices</name>
 	<!-- FIXME change it to the project's website -->
 	<url>https://www.amigoscode.com</url>
@@ -24,14 +24,13 @@
 
 	<dependencyManagement>
 		<dependencies>
-			<dependency>
-				<artifactId>
-					org.springframework.boot
-				</artifactId>
-				<groupId>spring-boot-dependencies</groupId>
-				<version>${spring.boot.dependencies.version}</version>
-				<scope>import</scope>
-			</dependency>
+   			<dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.dependencies.version}</version>
+                <scope>import</scope>
+                <type>pom</type>
+            </dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -64,4 +63,8 @@
 			</plugins>
 		</pluginManagement>
 	</build>
+	
+	<modules>
+		<module>customer</module>
+	</modules>
 </project>
