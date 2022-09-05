@@ -1,16 +1,19 @@
-package com.amigoscode.customer;
+package com.amigoscode.clients.fraud;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 public class FraudCheckResponse {
 
-	private Boolean isFraudster;
-	
+	Boolean isFraudster;
 }
