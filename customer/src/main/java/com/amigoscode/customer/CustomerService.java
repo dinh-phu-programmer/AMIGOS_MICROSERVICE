@@ -2,6 +2,7 @@ package com.amigoscode.customer;
 
 import org.springframework.stereotype.Service;
 
+import com.amigoscode.amqp.RabbitMQMessageProducer;
 import com.amigoscode.clients.fraud.FraudCheckResponse;
 import com.amigoscode.clients.fraud.FraudClient;
 import com.amigoscode.clients.notification.NotificationClient;
@@ -15,7 +16,7 @@ public class CustomerService {
 
 	private final CustomerRepository customerRepository;
 	private final FraudClient fraudClient;
-	private final NotificationClient notificationClient;
+	private final RabbitMQMessageProducer rabbitMQProducer;
 
 	public void registerCustomer(CustomerRegistrationRequest request) {
 		Customer customer = Customer.builder().firstName(request.getFirstName()).lastName(request.getLastName())
@@ -36,7 +37,11 @@ public class CustomerService {
 		}
 
 		// TODO: send notification
-		notificationClient.sendNotification(new NotificationRequest(customer.getId(), customer.getEmail(),
-				String.format("Hi %s, welcome to Amigoscode...", customer.getFirstName())));
+		NotificationRequest notificationRequest= new NotificationRequest(customer.getId(), customer.getEmail(),
+				String.format("Hi %s, welcome to Amigoscode...", customer.getFirstName()));
+//		 notificationClient.sendNotification(new NotificationRequest(customer.getId(), customer.getEmail(),
+//				String.format("Hi %s, welcome to Amigoscode...", customer.getFirstName())));
+		
+		rabbitMQProducer.publish(notificationRequest, "internal.exchange", "internal.notification.routing-key");
 	}
 }

@@ -1,4 +1,4 @@
-package com.amigos.notification;
+package com.amigoscode.notification;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

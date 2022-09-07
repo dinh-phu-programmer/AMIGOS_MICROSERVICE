@@ -1,4 +1,4 @@
-package com.amigos.notification;
+package com.amigoscode.notification;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

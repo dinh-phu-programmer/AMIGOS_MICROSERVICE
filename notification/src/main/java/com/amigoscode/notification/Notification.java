@@ -1,4 +1,4 @@
-package com.amigos.notification;
+package com.amigoscode.notification;
 
 import java.time.LocalDateTime;
 
