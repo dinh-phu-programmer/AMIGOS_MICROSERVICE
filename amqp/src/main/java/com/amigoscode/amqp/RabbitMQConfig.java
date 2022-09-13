@@ -31,7 +31,7 @@ public class RabbitMQConfig {
 		SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
 		factory.setConnectionFactory(connectionFactory);
 		factory.setMessageConverter(jacksonConverter());
-		return null;
+		return factory;
 	}
 
 	@Bean
